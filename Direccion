@@ -1,1 +1,60 @@
+package model;
+
+import util.ValidacionException;
+
+/**
+ * Representa la dirección de una persona o entidad de la agencia.
+ * Es utilizada por composición dentro de la clase Persona.
+ */
+public class Direccion {
+
+    private String calle;
+    private String ciudad;
+    private String region;
+
+    public Direccion(String calle, String ciudad, String region) throws ValidacionException {
+        setCalle(calle);
+        setCiudad(ciudad);
+        setRegion(region);
+    }
+
+    // Getters y Setters con validación básica
+    public String getCalle() {
+        return calle;
+    }
+
+    public void setCalle(String calle) throws ValidacionException {
+        if (calle == null || calle.trim().isEmpty()) {
+            throw new ValidacionException("La calle no puede estar vacía.");
+        }
+        this.calle = calle.trim();
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) throws ValidacionException {
+        if (ciudad == null || ciudad.trim().isEmpty()) {
+            throw new ValidacionException("La ciudad no puede estar vacía.");
+        }
+        this.ciudad = ciudad.trim();
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) throws ValidacionException {
+        if (region == null || region.trim().isEmpty()) {
+            throw new ValidacionException("La región no puede estar vacía.");
+        }
+        this.region = region.trim();
+    }
+
+    @Override
+    public String toString() {
+        return calle + ", " + ciudad + ", " + region;
+    }
+}
 
